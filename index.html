@@ -141,6 +141,7 @@ body.disco .portrait-wrap{animation:bounce .48s ease-in-out infinite alternate}
 .wish-card.pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
 @keyframes pop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
 
+.movie{display:block;width:min(100%,360px);margin:0 auto;border-radius:24px;border:8px solid var(--white);box-shadow:0 0 0 6px var(--gold),0 16px 32px rgba(194,24,91,.25);background:var(--white)}
 /* love */
 .love{text-align:center;padding-top:80px}
 .love .big{font-family:"Lobster",cursive;font-size:clamp(46px,13vw,76px);color:var(--raspberry);line-height:1.05}
@@ -228,6 +229,11 @@ body.disco .portrait-wrap{animation:bounce .48s ease-in-out infinite alternate}
     <p class="wishes-intro">Тебе 7 лет, поэтому коробок тоже 7. Открой каждую!</p>
     <div class="gifts" id="gifts"></div>
     <div class="wish-card" id="wishCard" aria-live="polite">Нажми на любую коробку 🎁</div>
+  </section>
+
+  <section>
+    <h2 class="h2">Видео для королевы</h2>
+    <video class="movie" src="erkem-video.mp4" poster="photos/00-queen.jpg" controls playsinline preload="metadata"></video>
   </section>
 
   <section class="love">
