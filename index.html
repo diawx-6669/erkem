@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Королева Еркем — 7 лет</title>
+<meta name="description" content="С днём рождения, Еркем! Тебе 7 лет, и сегодня ты наша королева.">
+<meta property="og:title" content="С днём рождения, королева Еркем! 👑">
+<meta property="og:description" content="Еркем, тебе подарок от брата. Нажми!">
+<meta property="og:image" content="https://diawx-6669.github.io/erkem/photos/00-queen.jpg">
+<meta name="theme-color" content="#FF5FA2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito:wght@600;800;900&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+<style>
+:root{
+  --pink:#FF5FA2;
+  --raspberry:#C2185B;
+  --blush:#FFE4EF;
+  --gold:#FFC93C;
+  --gold-deep:#E8A200;
+  --plum:#5B1A4A;
+  --white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Nunito",system-ui,sans-serif;font-weight:600;
+  color:var(--plum);background:var(--blush);
+  overflow-x:hidden;line-height:1.5;
+}
+body.locked{overflow:hidden;height:100vh}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible{outline:4px solid var(--gold);outline-offset:4px;border-radius:12px}
+img{display:block;max-width:100%}
+
+/* ---------- confetti layer ---------- */
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+
+/* ---------- gate: the gift ---------- */
+#gate{
+  position:fixed;inset:0;z-index:40;
+  background:radial-gradient(circle at 50% 40%, #FF8EC0 0%, var(--pink) 45%, var(--raspberry) 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  padding:24px 16px;text-align:center;color:var(--white);
+  transition:opacity .8s ease, visibility .8s;
+}
+#gate.gone{opacity:0;visibility:hidden}
+#gate h1{font-family:"Lobster",cursive;font-weight:400;font-size:clamp(40px,11vw,72px);line-height:1.05;text-shadow:0 4px 0 rgba(91,26,74,.25)}
+#gate p{font-weight:800;font-size:20px;opacity:.95}
+.gift{position:relative;width:200px;height:190px;animation:wobble 2.2s ease-in-out infinite}
+.gift .box{position:absolute;left:12px;right:12px;bottom:0;height:130px;background:var(--white);border-radius:10px;box-shadow:0 14px 0 rgba(91,26,74,.18)}
+.gift .lid{position:absolute;left:0;right:0;top:40px;height:46px;background:#FFF2F7;border-radius:10px;transition:transform .7s cubic-bezier(.3,1.6,.5,1), opacity .7s}
+.gift .rib-v{position:absolute;left:50%;transform:translateX(-50%);width:34px;top:0;bottom:0;background:var(--gold)}
+.gift .rib-h{position:absolute;left:0;right:0;top:44px;height:30px;background:var(--gold)}
+.gift .bow{position:absolute;left:50%;top:-30px;transform:translateX(-50%);width:110px;height:50px}
+.gift .bow::before,.gift .bow::after{content:"";position:absolute;top:8px;width:50px;height:38px;border:12px solid var(--gold);border-radius:50% 50% 50% 50%}
+.gift .bow::before{left:0;transform:rotate(-18deg)}
+.gift .bow::after{right:0;transform:rotate(18deg)}
+.gift.open .lid{transform:translateY(-220px) rotate(-28deg);opacity:0}
+.gift.open{animation:none}
+@keyframes wobble{0%,100%{transform:rotate(0)}10%{transform:rotate(-6deg)}20%{transform:rotate(6deg)}30%{transform:rotate(-4deg)}40%{transform:rotate(0)}}
+
+/* ---------- page ---------- */
+main{max-width:600px;margin:0 auto;padding:0 16px 80px}
+section{padding:64px 0 0}
+.h2{font-family:"Lobster",cursive;font-weight:400;font-size:clamp(34px,9vw,48px);line-height:1.1;color:var(--raspberry);text-align:center;margin-bottom:24px}
+
+/* hero */
+.hero{padding-top:56px;text-align:center;position:relative}
+.portrait-wrap{position:relative;width:min(78vw,340px);margin:70px auto 0}
+.portrait{width:100%;aspect-ratio:1;border-radius:50%;object-fit:cover;object-position:50% 30%;border:10px solid var(--white);box-shadow:0 0 0 8px var(--gold),0 20px 40px rgba(194,24,91,.35)}
+.crown{position:absolute;left:50%;top:-30%;width:62%;transform:translate(-50%,-120vh) rotate(-20deg);filter:drop-shadow(0 8px 0 rgba(91,26,74,.2))}
+.crown.down{animation:crownDrop 1.3s cubic-bezier(.25,1.4,.5,1) .5s forwards}
+@keyframes crownDrop{to{transform:translate(-50%,0) rotate(-8deg)}}
+.age-badge{position:absolute;right:-6px;bottom:4%;width:30%;aspect-ratio:1;border-radius:50%;background:var(--pink);color:var(--white);border:6px solid var(--white);display:flex;align-items:center;justify-content:center;font-family:"Lobster",cursive;font-size:clamp(44px,12vw,64px);line-height:1;transform:rotate(10deg);box-shadow:0 8px 0 rgba(91,26,74,.15)}
+.queen-name{font-family:"Lobster",cursive;font-weight:400;color:var(--raspberry);line-height:.95;margin-top:34px}
+.queen-name small{display:block;font-size:clamp(26px,7vw,36px);color:var(--pink)}
+.queen-name span{display:block;font-size:clamp(76px,24vw,132px);background:linear-gradient(180deg,var(--pink) 0%,var(--raspberry) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .08em .08em}
+.greet{font-size:22px;font-weight:900;margin-top:14px}
+.greet-kz{font-size:18px;font-weight:800;color:var(--raspberry);opacity:.85}
+.again{margin-top:20px;display:inline-flex;align-items:center;gap:8px;background:var(--white);padding:12px 20px;border-radius:999px;font-weight:800;color:var(--raspberry);box-shadow:0 4px 0 #F5B8D2}
+
+/* decree */
+.decree{background:var(--white);border-radius:28px;padding:36px 24px 28px;position:relative;border:3px dashed #F7A8CB;text-align:left}
+.decree::before{content:"👑";position:absolute;top:-28px;left:50%;transform:translateX(-50%);font-size:44px;background:var(--blush);padding:0 10px;border-radius:50%}
+.decree h2{font-family:"Lobster",cursive;font-weight:400;font-size:34px;color:var(--raspberry);text-align:center;margin-bottom:12px}
+.decree p{font-size:18px;margin-bottom:14px}
+.decree ol{font-size:18px;padding-left:26px;display:grid;gap:8px}
+.decree li::marker{color:var(--pink);font-weight:900}
+.decree .sign{margin-top:20px;text-align:right;font-family:"Lobster",cursive;font-size:24px;color:var(--raspberry)}
+
+/* photos */
+.story{display:grid;gap:34px}
+.snap{background:var(--white);padding:12px 12px 14px;border-radius:6px;box-shadow:0 10px 24px rgba(194,24,91,.18);width:88%;}
+.snap:nth-child(odd){transform:rotate(-2.5deg);justify-self:start}
+.snap:nth-child(even){transform:rotate(2.5deg);justify-self:end}
+.snap img{width:100%;border-radius:3px}
+.snap figcaption{font-family:"Lobster",cursive;font-size:24px;color:var(--raspberry);text-align:center;padding-top:10px;line-height:1.15}
+
+/* dance */
+.dance{text-align:center}
+.dance p{font-size:18px;margin-bottom:22px}
+.dance-btn{
+  font-size:26px;font-weight:900;color:var(--white);
+  background:var(--pink);padding:22px 34px;border-radius:999px;
+  box-shadow:0 8px 0 var(--raspberry);transition:transform .1s, box-shadow .1s;
+}
+.dance-btn:active{transform:translateY(6px);box-shadow:0 2px 0 var(--raspberry)}
+.dancers{font-size:54px;margin-top:26px;display:flex;justify-content:center;gap:10px;min-height:70px}
+.dancers span{display:inline-block}
+
+body.disco{animation:discoBg 2s linear infinite}
+@keyframes discoBg{0%{background:#FFE4EF}25%{background:#FFD1F0}50%{background:#FFE9C7}75%{background:#E9DBFF}100%{background:#FFE4EF}}
+body.disco .dancers span{animation:boogie .48s ease-in-out infinite alternate}
+body.disco .dancers span:nth-child(2){animation-delay:.12s}
+body.disco .dancers span:nth-child(3){animation-delay:.24s}
+body.disco .snap{animation:sway .96s ease-in-out infinite alternate}
+body.disco .portrait-wrap{animation:bounce .48s ease-in-out infinite alternate}
+@keyframes boogie{from{transform:translateY(0) rotate(-12deg)}to{transform:translateY(-18px) rotate(12deg)}}
+@keyframes sway{from{rotate:-3deg}to{rotate:3deg}}
+@keyframes bounce{from{transform:translateY(0) scale(1)}to{transform:translateY(-10px) scale(1.03)}}
+
+/* wishes: 7 gifts */
+.wishes-intro{text-align:center;font-size:18px;margin:-10px 0 22px}
+.gifts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mini{aspect-ratio:1;border-radius:18px;background:var(--white);position:relative;display:flex;align-items:center;justify-content:center;font-size:44px;box-shadow:0 6px 0 #F5B8D2;transition:transform .15s}
+.mini::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:16%;transform:translateX(-50%);background:var(--pink);opacity:.9}
+.mini::after{content:"";position:absolute;top:50%;left:0;right:0;height:16%;transform:translateY(-50%);background:var(--pink);opacity:.9}
+.mini b{position:relative;z-index:1;font-family:"Lobster",cursive;font-weight:400;font-size:36px;color:var(--white);background:var(--raspberry);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.mini:active{transform:scale(.94)}
+.mini.opened{background:var(--gold);box-shadow:0 6px 0 var(--gold-deep)}
+.mini.opened::before,.mini.opened::after{display:none}
+.mini.last{grid-column:2}
+.wish-card{
+  margin-top:22px;min-height:110px;background:var(--white);border-radius:24px;padding:22px;
+  text-align:center;font-size:22px;font-weight:900;color:var(--raspberry);
+  display:flex;align-items:center;justify-content:center;border:3px solid var(--gold);
+}
+.wish-card.pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* love */
+.love{text-align:center;padding-top:80px}
+.love .big{font-family:"Lobster",cursive;font-size:clamp(46px,13vw,76px);color:var(--raspberry);line-height:1.05}
+.love .heart{font-size:90px;display:inline-block;animation:beat 1.1s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}45%{transform:scale(1.12)}}
+.love .from{font-size:20px;font-weight:800;margin-top:14px}
+.love .from-kz{font-size:17px;color:var(--raspberry);opacity:.85}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  body.disco{animation:none}
+}
+</style>
+</head>
+<body class="locked">
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<div id="gate" role="dialog" aria-label="Подарок для Еркем">
+  <h1>Еркем,<br>тебе подарок!</h1>
+  <button class="gift" id="giftBtn" aria-label="Открыть подарок">
+    <span class="box"><span class="rib-v"></span></span>
+    <span class="lid"><span class="rib-v"></span><span class="bow"></span></span>
+  </button>
+  <p>Нажми на коробку 👆</p>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="portrait-wrap">
+      <svg class="crown" id="crown" viewBox="0 0 200 140" aria-hidden="true">
+        <path d="M14 120 L4 30 L52 72 L100 8 L148 72 L196 30 L186 120 Z" fill="#FFC93C" stroke="#E8A200" stroke-width="6" stroke-linejoin="round"/>
+        <rect x="14" y="108" width="172" height="24" rx="8" fill="#E8A200"/>
+        <circle cx="4" cy="30" r="10" fill="#FF5FA2"/><circle cx="100" cy="8" r="11" fill="#FF5FA2"/><circle cx="196" cy="30" r="10" fill="#FF5FA2"/>
+        <circle cx="100" cy="82" r="14" fill="#C2185B"/><circle cx="55" cy="94" r="9" fill="#FFFFFF"/><circle cx="145" cy="94" r="9" fill="#FFFFFF"/>
+        <circle cx="50" cy="120" r="6" fill="#FFF"/><circle cx="100" cy="120" r="6" fill="#FFF"/><circle cx="150" cy="120" r="6" fill="#FFF"/>
+      </svg>
+      <img class="portrait" src="photos/00-queen.jpg" alt="Еркем">
+      <div class="age-badge" aria-label="7 лет">7</div>
+    </div>
+    <h1 class="queen-name"><small>Её Величество королева</small><span>Еркем</span></h1>
+    <p class="greet">С днём рождения! Тебе 7&nbsp;лет&nbsp;🎂</p>
+    <p class="greet-kz">Туған күніңмен, Еркем!</p>
+    <button class="again" id="songBtn">🎵 Сыграть песенку ещё раз</button>
+  </section>
+
+  <section>
+    <div class="decree">
+      <h2>Королевский указ</h2>
+      <p>С 30 октября 2026 года Еркем — настоящая королева нашего дома!</p>
+      <p>Королева повелевает:</p>
+      <ol>
+        <li>Все называют её «Ваше Величество».</li>
+        <li>Все танцуют с королевой, когда она захочет.</li>
+        <li>Королеве дают самый большой кусок торта.</li>
+        <li>Брат исполняет одно её желание.</li>
+        <li>Все обнимают королеву много-много раз.</li>
+      </ol>
+      <p class="sign">Брат Ералы</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="h2">Как росла наша королева</h2>
+    <div class="story">
+      <figure class="snap"><img src="photos/01-newborn.jpg" alt="Маленькая Еркем спит" loading="lazy"><figcaption>Самая маленькая принцесса</figcaption></figure>
+      <figure class="snap"><img src="photos/02-brother.jpg" alt="Еркем и брат" loading="lazy"><figcaption>Брат с тобой с первого месяца</figcaption></figure>
+      <figure class="snap"><img src="photos/03-dandelion.jpg" alt="Еркем с одуванчиком" loading="lazy"><figcaption>Первые одуванчики</figcaption></figure>
+      <figure class="snap"><img src="photos/04-family.jpg" alt="Вся семья" loading="lazy"><figcaption>Вся наша семья</figcaption></figure>
+      <figure class="snap"><img src="photos/05-mountains.jpg" alt="Еркем в горах" loading="lazy"><figcaption>Ауылда, тауда</figcaption></figure>
+      <figure class="snap"><img src="photos/06-apple.jpg" alt="Еркем с яблоком" loading="lazy"><figcaption>Самое вкусное яблоко</figcaption></figure>
+      <figure class="snap"><img src="photos/07-now.jpg" alt="Еркем с мамой" loading="lazy"><figcaption>С мамой</figcaption></figure>
+      <figure class="snap"><img src="photos/08-selfie.jpg" alt="Еркем и брат" loading="lazy"><figcaption>Я и ты</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="dance">
+    <h2 class="h2">Королевская дискотека</h2>
+    <p>Королева любит танцевать! Нажми и танцуй вместе со всеми.</p>
+    <button class="dance-btn" id="danceBtn" aria-pressed="false">💃 Включить танцы</button>
+    <div class="dancers" aria-hidden="true"><span>💃</span><span>👑</span><span>🕺</span></div>
+  </section>
+
+  <section>
+    <h2 class="h2">7 подарков-пожеланий</h2>
+    <p class="wishes-intro">Тебе 7 лет, поэтому коробок тоже 7. Открой каждую!</p>
+    <div class="gifts" id="gifts"></div>
+    <div class="wish-card" id="wishCard" aria-live="polite">Нажми на любую коробку 🎁</div>
+  </section>
+
+  <section class="love">
+    <span class="heart" aria-hidden="true">💗</span>
+    <p class="big">Я люблю тебя, Еркем!</p>
+    <p class="from">Твой брат Ералы</p>
+    <p class="from-kz">Сені қатты жақсы көремін!</p>
+  </section>
+</main>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- confetti ---------- */
+  const cv = document.getElementById('confetti'), cx = cv.getContext('2d');
+  let parts = [], running = false;
+  const colors = ['#FF5FA2','#C2185B','#FFC93C','#FFFFFF','#FF9CC8','#B98CFF'];
+  function size(){ cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; }
+  size(); addEventListener('resize', size);
+  function burst(n = 160, x = innerWidth/2, y = innerHeight/2){
+    if (reduce) return;
+    for (let i = 0; i < n; i++){
+      const a = Math.random()*Math.PI*2, s = 4 + Math.random()*10;
+      parts.push({x, y, vx:Math.cos(a)*s, vy:Math.sin(a)*s - 6, r:Math.random()*Math.PI, vr:(Math.random()-.5)*.3,
+        w:6+Math.random()*8, h:8+Math.random()*10, c:colors[i%colors.length], heart: Math.random() < .15, life:0});
+    }
+    if (!running){ running = true; requestAnimationFrame(tick); }
+  }
+  function tick(){
+    const d = devicePixelRatio; cx.clearRect(0,0,cv.width,cv.height);
+    parts.forEach(p => {
+      p.vy += .22; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life++;
+      cx.save(); cx.translate(p.x*d, p.y*d); cx.rotate(p.r); cx.fillStyle = p.c;
+      if (p.heart){ cx.font = (22*d)+'px serif'; cx.fillText('💗', 0, 0); }
+      else cx.fillRect(-p.w*d/2, -p.h*d/2, p.w*d, p.h*d);
+      cx.restore();
+    });
+    parts = parts.filter(p => p.y < innerHeight + 40 && p.life < 400);
+    if (parts.length) requestAnimationFrame(tick); else { running = false; cx.clearRect(0,0,cv.width,cv.height); }
+  }
+
+  /* ---------- sound ---------- */
+  let ac = null, master = null;
+  function audio(){
+    if (!ac){ ac = new (window.AudioContext || window.webkitAudioContext)(); master = ac.createGain(); master.gain.value = .5; master.connect(ac.destination); }
+    if (ac.state === 'suspended') ac.resume();
+    return ac;
+  }
+  const N = {C4:261.63,D4:293.66,E4:329.63,F4:349.23,G4:392,A4:440,B4:493.88,C5:523.25,D5:587.33,E5:659.25,F5:698.46,G5:783.99,A3:220,F3:174.61,G3:196,C3:130.81,E3:164.81};
+  function bell(f, t, dur, vol = .3){
+    [1,2,3].forEach((h,i) => {
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = i ? 'sine' : 'triangle'; o.frequency.value = f*h;
+      const v = vol / (h*h);
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(v, t+.01); g.gain.exponentialRampToValueAtTime(.0001, t+dur+.6);
+      o.connect(g); g.connect(master); o.start(t); o.stop(t+dur+.7);
+    });
+  }
+  // Happy Birthday (public domain melody)
+  const song = [['G4',.75],['G4',.25],['A4',1],['G4',1],['C5',1],['B4',2],
+                ['G4',.75],['G4',.25],['A4',1],['G4',1],['D5',1],['C5',2],
+                ['G4',.75],['G4',.25],['G5',1],['E5',1],['C5',1],['B4',1],['A4',2],
+                ['F5',.75],['F5',.25],['E5',1],['C5',1],['D5',1],['C5',3]];
+  let songEnd = 0;
+  function playSong(){
+    audio(); const beat = .43; let t = ac.currentTime + .15;
+    song.forEach(([n,b]) => { bell(N[n], t, b*beat*.9); t += b*beat; });
+    songEnd = t; return (t - ac.currentTime) * 1000;
+  }
+
+  // dance loop
+  let danceTimer = null, nextBar = 0, bar = 0;
+  const bass = [['C3','C3','G3','G3'],['A3','A3','E3','E3'],['F3','F3','C3','C3'],['G3','G3','G3','G3']];
+  const arp = [['C5','E5','G5','E5'],['A4','C5','E5','C5'],['F4','A4','C5','A4'],['G4','B4','D5','B4']];
+  function kick(t){ const o=ac.createOscillator(),g=ac.createGain(); o.frequency.setValueAtTime(150,t); o.frequency.exponentialRampToValueAtTime(40,t+.15); g.gain.setValueAtTime(.9,t); g.gain.exponentialRampToValueAtTime(.001,t+.2); o.connect(g); g.connect(master); o.start(t); o.stop(t+.22); }
+  function hat(t){ const b=ac.createBuffer(1,ac.sampleRate*.05,ac.sampleRate),d=b.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=(Math.random()*2-1)*(1-i/d.length); const s=ac.createBufferSource(),f=ac.createBiquadFilter(),g=ac.createGain(); f.type='highpass'; f.frequency.value=7000; g.gain.value=.25; s.buffer=b; s.connect(f); f.connect(g); g.connect(master); s.start(t); }
+  function clap(t){ const b=ac.createBuffer(1,ac.sampleRate*.12,ac.sampleRate),d=b.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,3); const s=ac.createBufferSource(),f=ac.createBiquadFilter(),g=ac.createGain(); f.type='bandpass'; f.frequency.value=1500; g.gain.value=.5; s.buffer=b; s.connect(f); f.connect(g); g.connect(master); s.start(t); }
+  function synthBass(f,t,d){ const o=ac.createOscillator(),g=ac.createGain(),fl=ac.createBiquadFilter(); o.type='sawtooth'; o.frequency.value=f; fl.type='lowpass'; fl.frequency.value=600; g.gain.setValueAtTime(.22,t); g.gain.exponentialRampToValueAtTime(.001,t+d); o.connect(fl); fl.connect(g); g.connect(master); o.start(t); o.stop(t+d+.05); }
+  function scheduleBar(t){
+    const beat = 60/124, i = bar % 4;
+    for (let b = 0; b < 4; b++){
+      const tb = t + b*beat;
+      kick(tb); hat(tb + beat/2); if (b % 2) clap(tb);
+      synthBass(N[bass[i][b]], tb, beat*.9);
+      arp[i].forEach((n,k) => bell(N[n], tb + k*beat/4, beat/4, .09));
+    }
+    bar++; return t + 4*beat;
+  }
+  function startDance(){
+    audio(); nextBar = ac.currentTime + .1; bar = 0;
+    const loop = () => { while (nextBar < ac.currentTime + .6) nextBar = scheduleBar(nextBar); };
+    loop(); danceTimer = setInterval(loop, 150);
+  }
+  function stopDance(){ clearInterval(danceTimer); danceTimer = null; master.gain.setTargetAtTime(0, ac.currentTime, .05); setTimeout(() => master.gain.value = .5, 300); }
+
+  function say(text){
+    try{
+      if (!('speechSynthesis' in window)) return;
+      const u = new SpeechSynthesisUtterance(text); u.lang = 'ru-RU'; u.rate = .95; u.pitch = 1.25;
+      const v = speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith('ru')); if (v) u.voice = v;
+      speechSynthesis.speak(u);
+    }catch(e){}
+  }
+
+  /* ---------- open the gift ---------- */
+  const gate = document.getElementById('gate'), gift = document.getElementById('giftBtn');
+  gift.addEventListener('click', () => {
+    if (gift.classList.contains('open')) return;
+    gift.classList.add('open');
+    const r = gift.getBoundingClientRect();
+    burst(200, r.left + r.width/2, r.top + r.height/3);
+    let ms = 0; try { ms = playSong(); } catch(e){}
+    setTimeout(() => {
+      gate.classList.add('gone'); document.body.classList.remove('locked');
+      document.getElementById('crown').classList.add('down');
+      setTimeout(() => burst(140, innerWidth/2, innerHeight*.3), 1500);
+    }, 900);
+    setTimeout(() => say('С днём рождения, королева Еркем! Тебе семь лет! Мы тебя очень любим!'), ms + 300);
+  });
+
+  document.getElementById('songBtn').addEventListener('click', () => {
+    if (danceTimer) return;
+    if (ac && ac.currentTime < songEnd) return;
+    playSong(); burst(120, innerWidth/2, innerHeight*.4);
+  });
+
+  /* ---------- dance ---------- */
+  const danceBtn = document.getElementById('danceBtn');
+  let confettiLoop = null;
+  danceBtn.addEventListener('click', () => {
+    const on = !document.body.classList.contains('disco');
+    document.body.classList.toggle('disco', on);
+    danceBtn.setAttribute('aria-pressed', on);
+    danceBtn.textContent = on ? '⏹ Остановить танцы' : '💃 Включить танцы';
+    if (on){ startDance(); burst(120); confettiLoop = setInterval(() => burst(40, Math.random()*innerWidth, -10), 1900); }
+    else { stopDance(); clearInterval(confettiLoop); }
+  });
+
+  /* ---------- 7 wishes ---------- */
+  const wishes = [
+    'Будь самой счастливой девочкой на свете! 🌸',
+    'Танцуй каждый день и стань настоящей звездой танцев! 💃',
+    'Пусть все твои мечты сбываются! ✨',
+    'Много розового, много сладкого и много игрушек! 🍰',
+    'Расти умной, смелой и доброй! 🦋',
+    'Пусть мы с тобой всегда играем и смеёмся вместе! 🤗',
+    'Еркем, я тебя очень-очень люблю! ❤️'
+  ];
+  const wrap = document.getElementById('gifts'), card = document.getElementById('wishCard');
+  wishes.forEach((w, i) => {
+    const b = document.createElement('button');
+    b.className = 'mini' + (i === 6 ? ' last' : '');
+    b.setAttribute('aria-label', 'Подарок номер ' + (i+1));
+    b.innerHTML = '<b>' + (i+1) + '</b>';
+    b.addEventListener('click', () => {
+      b.classList.add('opened'); b.innerHTML = i === 6 ? '❤️' : ['🌸','💃','✨','🍰','🦋','🤗'][i];
+      card.textContent = w; card.classList.remove('pop'); void card.offsetWidth; card.classList.add('pop');
+      const r = b.getBoundingClientRect(); burst(i === 6 ? 220 : 60, r.left + r.width/2, r.top + r.height/2);
+      if (!danceTimer){ try{ audio(); const t = ac.currentTime; ['C5','E5','G5','C5'].forEach((n,k)=>bell(N[n]*(k===3?2:1), t+k*.08, .2, .18)); }catch(e){} }
+    });
+    wrap.appendChild(b);
+  });
+})();
+</script>
+</body>
+</html>
