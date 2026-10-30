@@ -1,0 +1,32 @@
+{
+  "_help": "Фото для альбома и игр. age — подпись возраста (для альбома и игры «Сколько мне тут лет»). Если age пустой, фото не попадёт в игру про возраст. order — порядок в альбоме.",
+  "photos": [
+    { "file": "01-newborn.jpg",                 "age": "Новорождённая", "note": "Самая маленькая королева на свете" },
+    { "file": "02-brother.jpg",                 "age": "1 месяц",      "note": "Первый день с братом Ералы" },
+    { "file": "03-dandelion.jpg",               "age": "1 годик",      "note": "Загадала желание на одуванчик" },
+    { "file": "04-family.jpg",                  "age": "1 годик",      "note": "Вся наша команда" },
+    { "file": "05-mountains.jpg",               "age": "2 годика",     "note": "Кричит горам: «Я здесь!»" },
+    { "file": "06-apple.jpg",                   "age": "3 годика",     "note": "Яблоко больше головы" },
+    { "file": "00-queen.jpg",                   "age": "6 лет",        "note": "Корона почти готова" },
+    { "file": "07-now.jpg",                     "age": "6 лет",        "note": "В красном платье с мамой" },
+    { "file": "08-selfie.jpg",                  "age": "6 лет",        "note": "Держит брата за волосы. Он не против" },
+    { "file": "more/23-bandana.jpg",            "age": "",             "note": "Серьёзный разговор" },
+    { "file": "more/25-hanging-smile.jpg",      "age": "",             "note": "Повисла и хитрит" },
+    { "file": "more/26-car-selfie.jpg",         "age": "",             "note": "Селфи по дороге" },
+    { "file": "more/12-sleepy-pout.jpg",        "age": "",             "note": "Не будите королеву" },
+    { "file": "more/17-crying-over-book.jpg",   "age": "",             "note": "Книжка оказалась очень грустной" },
+    { "file": "more/22-cap-kiss-mountains.jpg", "age": "",             "note": "Чмок горам" },
+    { "file": "more/21-bob-hair-selfie.jpg",    "age": "",             "note": "Новая причёска" },
+    { "file": "more/24-peace-closeup.jpg",      "age": "",             "note": "Мир, дружба, Еркем" },
+    { "file": "more/18-selfie-with-mom.jpg",    "age": "",             "note": "С мамой" },
+    { "file": "more/10-mall-with-mom.jpg",      "age": "",             "note": "Прогулка с мамой" },
+    { "file": "more/11-with-sister-selfie.jpg", "age": "",             "note": "С сестрой" },
+    { "file": "more/14-beach-night-with-brother.jpg", "age": "",       "note": "Брат держит крепко" },
+    { "file": "more/15-beach-night-peace.jpg",  "age": "",             "note": "Звезда ночного пляжа" },
+    { "file": "more/27-mountains-red-bag.jpg",  "age": "",             "note": "Путешественница" },
+    { "file": "more/20-trench-coat-model.jpg",  "age": "",             "note": "Модель года" },
+    { "file": "more/19-marble-stairs-sassy.jpg","age": "",             "note": "Босс этой лестницы" },
+    { "file": "more/13-orange-tee-smile.jpg",   "age": "",             "note": "А теперь мне семь!" },
+    { "file": "more/16-red-carpet-white-dress.jpg", "age": "",             "note": "Королева выходит" }
+  ]
+}

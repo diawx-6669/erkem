@@ -1,0 +1,27 @@
+{
+  "_help": "Призы и задания для «Дождя сюрпризов», «Колеса фортуны» и «Горячей картошки». type: bonus — приз (попадает в Королевскую казну), task — весёлое задание. weight — как часто выпадает (больше = чаще). once: true — приз можно выиграть только один раз. В тексте «___» превращается в поле, куда родители впишут сумму.",
+  "bonusChance": 0.65,
+  "items": [
+    { "id": "phone2h",     "type": "bonus", "emoji": "📱", "text": "2 часа телефона",                          "weight": 6 },
+    { "id": "macbook",     "type": "bonus", "emoji": "💻", "text": "Макбук брата на 1 час",                    "weight": 4 },
+    { "id": "bro-phone",   "type": "bonus", "emoji": "🤳", "text": "Телефон брата в любое время",              "weight": 2, "once": true },
+    { "id": "sweet",       "type": "bonus", "emoji": "🍫", "text": "Шоколадка, мороженое или любая сладость на выбор", "weight": 8 },
+    { "id": "money",       "type": "bonus", "emoji": "🐷", "text": "Деньги в копилку: ___ тенге",              "weight": 4 },
+    { "id": "cartoon",     "type": "bonus", "emoji": "🎬", "text": "Выбрать мультик на вечер",                 "weight": 7 },
+    { "id": "late",        "type": "bonus", "emoji": "🌙", "text": "Лечь спать на 30 минут позже",             "weight": 5 },
+    { "id": "bro-wish",    "type": "bonus", "emoji": "🧞", "text": "Брат выполняет любое желание",             "weight": 3 },
+    { "id": "park",        "type": "bonus", "emoji": "🎡", "text": "Поход в парк или кафе всей семьёй",        "weight": 3 },
+    { "id": "majesty",     "type": "bonus", "emoji": "👑", "text": "Весь день все называют её «Ваше Величество»", "weight": 4 },
+
+    { "id": "t-dance",     "type": "task", "emoji": "💃", "text": "Станцуй 30 секунд под дискотеку",           "weight": 6, "seconds": 30, "music": true },
+    { "id": "t-song",      "type": "task", "emoji": "🎤", "text": "Спой песенку",                              "weight": 5 },
+    { "id": "t-animal",    "type": "task", "emoji": "🐧", "text": "Изобрази котика, пингвина или курочку",      "weight": 6 },
+    { "id": "t-jumps",     "type": "task", "emoji": "🦩", "text": "7 прыжков на одной ноге",                   "weight": 5 },
+    { "id": "t-hugs",      "type": "task", "emoji": "🤗", "text": "Обними каждого в комнате",                  "weight": 6 },
+    { "id": "t-compl",     "type": "task", "emoji": "💐", "text": "Скажи комплимент маме, папе, брату и сестре", "weight": 5 },
+    { "id": "t-robot",     "type": "task", "emoji": "🤖", "text": "Говори как робот 1 минуту",                 "weight": 4, "seconds": 60 },
+    { "id": "t-table",     "type": "task", "emoji": "🍽️", "text": "Помоги убрать со стола",                    "weight": 3 },
+    { "id": "t-nophone",   "type": "task", "emoji": "📵", "text": "15 минут без телефона",                     "weight": 3 },
+    { "id": "t-papa",      "type": "task", "emoji": "🤪", "text": "Рассмеши папу без слов",                    "weight": 4 }
+  ]
+}
