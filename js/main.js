@@ -205,8 +205,51 @@ function secretUnlocked() {
   sfx.magic();
 }
 
+/* ---------- живой фон и искорки ---------- */
+function ambient() {
+  const box = document.querySelector('.ambient');
+  if (!box || reduced()) return;
+  const kinds = [() => doodle.heart(), () => doodle.sparkle(), () => doodle.star(), () => doodle.heart({ fill: '#FFC93C' }), () => doodle.sparkle({ fill: '#3DDBB0' }), () => doodle.heart({ fill: '#FF9CC6' })];
+  const n = window.innerWidth > 1000 ? 16 : 10;
+  for (let i = 0; i < n; i++) {
+    const s = document.createElement('span');
+    const t = 16 + Math.random() * 18;
+    s.style.cssText = `left:${(i / n) * 100 + Math.random() * 5}%;--s:${16 + Math.random() * 26}px;--o:${(0.25 + Math.random() * 0.4).toFixed(2)};--t:${t.toFixed(1)}s;--dl:${(-Math.random() * t).toFixed(1)}s;--x:${(Math.random() * 120 - 60).toFixed(0)}px`;
+    s.innerHTML = kinds[i % kinds.length]();
+    box.append(s);
+  }
+}
+const SPARK_COLORS = ['#FFC93C', '#FF5FA2', '#3DDBB0', '#ffffff'];
+window.addEventListener('pointerdown', (e) => {
+  if (reduced() || e.pointerType === 'mouse' && e.button !== 0) return;
+  for (let i = 0; i < 7; i++) {
+    const s = document.createElement('span');
+    s.className = 'spark';
+    s.style.background = SPARK_COLORS[i % SPARK_COLORS.length];
+    document.body.append(s);
+    const a = (i / 7) * Math.PI * 2 + Math.random() * 0.5, d = 26 + Math.random() * 34;
+    const anim = s.animate([
+      { transform: `translate(${e.clientX - 7}px, ${e.clientY - 7}px) scale(.4) rotate(0deg)`, opacity: 1 },
+      { transform: `translate(${e.clientX - 7 + Math.cos(a) * d}px, ${e.clientY - 7 + Math.sin(a) * d}px) scale(1.1) rotate(120deg)`, opacity: 1, offset: 0.55 },
+      { transform: `translate(${e.clientX - 7 + Math.cos(a) * d * 1.3}px, ${e.clientY + 6 + Math.sin(a) * d * 1.3}px) scale(0) rotate(200deg)`, opacity: 0 }
+    ], { duration: 650, easing: 'cubic-bezier(.2,.8,.4,1)' });
+    anim.onfinish = () => s.remove();
+  }
+}, { passive: true });
+
+/** Мерцающие звёздочки возле заголовков. */
+function twinkleTitles(root) {
+  root.querySelectorAll('.room-title, .floor-name, .section-title').forEach((el, i) => {
+    if (el.querySelector('.twinkle')) return;
+    el.append(Object.assign(document.createElement('span'), { className: 'twinkle', style: `right:-14px;top:-8px;animation-delay:${-i * 0.7}s` }),
+      Object.assign(document.createElement('span'), { className: 'twinkle t2', style: `left:-12px;bottom:-4px` }));
+  });
+}
+new MutationObserver(() => twinkleTitles(app)).observe(app, { childList: true, subtree: true });
+
 /* ---------- старт ---------- */
 (async function start() {
+  ambient();
   DATA = await loadAll();
   window.addEventListener('hashchange', render);
   render();

@@ -47,13 +47,14 @@ export function mount(app, { data, store }) {
   const reveal = gift.querySelector('.gift-reveal');
   const photo = sticker(queen, { rot: -3, tape: 'tl tr', cls: 'intro-photo', big: true, eager: true });
   reveal.prepend(photo);
+  photo.append(h('span.photo-glints', { 'aria-hidden': 'true' }, h('span.twinkle'), h('span.twinkle.t2'), h('span.twinkle.t3'), h('span.twinkle')));
 
   const tapHint = h('div.intro-tap', {}, sayBtn('Еркем, это тебе! Нажми на подарок.'), h('span', {}, 'Нажми на подарок'));
 
   const title = h('div.intro-title', { 'aria-hidden': 'true' },
     h('p.it-small.hand', {}, 'Её Величество'),
     h('p.it-mid', {}, 'королева'),
-    h('h1.it-name', {}, ...[...'Еркем'].map((c) => h('span.ch', {}, c))),
+    h('h1.it-name', {}, ...[...'Еркем'].map((c, i) => h('span.ch', { style: `--i:${i}` }, c))),
     h('div.it-age', {}, h('span.it-seven', { html: doodle.seven() }), h('span.it-age-txt', {}, 'лет')),
     h('p.it-kz.hand', {}, 'Туған күніңмен!')
   );
@@ -109,6 +110,7 @@ export function mount(app, { data, store }) {
 
     if (!g || reduced()) {
       lid.remove(); box.remove(); note.remove();
+      title.querySelector('.it-name').classList.add('is-waving');
       gift.classList.add('is-open');
       sfx.fanfare(); music.play('birthday'); confetti({ particleCount: 80, spread: 90 });
       finishText();
@@ -168,6 +170,7 @@ export function mount(app, { data, store }) {
       .from(title.querySelector('.it-age'), { scale: 3, opacity: 0, rotation: 25, duration: 0.35, ease: 'power4.in', onComplete: () => sfx.stamp() })
       .from(title.querySelector('.it-kz'), { opacity: 0, x: -20, duration: 0.5 })
       .from(after.querySelector('.intro-actions'), { opacity: 0, y: 30, duration: 0.5 });
+    tl.call(() => title.querySelector('.it-name').classList.add('is-waving'));
     await wait(500);
     finishText();
     await wait(2500);

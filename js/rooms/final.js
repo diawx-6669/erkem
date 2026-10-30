@@ -48,6 +48,7 @@ export function mount(root, { data }) {
   root.append(love);
 
   function grand() {
+    love.classList.remove('is-waiting');
     love.classList.add('is-on');
     love.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'center' });
     salute(); music.play('birthday');
