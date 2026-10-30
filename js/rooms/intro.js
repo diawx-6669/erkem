@@ -1,6 +1,6 @@
 // Вход во дворец: подарок → лента → крышка → корона падает на фото → салют.
 import { h, btn, sayBtn, sticker, gsap, reduced, salute, confetti, wait } from '../core/ui.js';
-import { doodle, scatter } from '../core/doodles.js';
+import { doodle, scatter, nightScene } from '../core/doodles.js';
 import { sfx, music, unlock } from '../core/audio.js';
 import { speak } from '../core/speech.js';
 import { photoByName } from '../core/data.js';
@@ -65,6 +65,7 @@ export function mount(app, { data, store }) {
   const after = h('div.intro-after', {}, title, h('div.intro-actions', {}, sayBtn('Её Величество королева Еркем, семь лет! Туған күніңмен!'), go), decree);
 
   stage.append(deco, note, gift, tapHint);
+  app.insertAdjacentHTML('beforeend', nightScene({ fit: 'meet' }));
   app.append(srTitle, stage, after);
 
   if (store.get('seenIntro')) {

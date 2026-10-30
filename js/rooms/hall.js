@@ -1,6 +1,6 @@
 // Тронный зал — панель королевы: профиль, прогресс, главная игра, вкладки игр, сокровищница.
 import { h, sayBtn, gsap, reduced } from '../core/ui.js';
-import { doodle } from '../core/doodles.js';
+import { doodle, nightScene } from '../core/doodles.js';
 import { photoByName } from '../core/data.js';
 import { sfx } from '../core/audio.js';
 import { speak } from '../core/speech.js';
@@ -98,6 +98,7 @@ export function mount(app, { data, store, rooms, special, openDoor }) {
     treasure('#/final', 'Пожелания', '7 коробочек от брата', doodle.envelope())
   );
 
+  app.insertAdjacentHTML('beforeend', nightScene());
   app.append(profile, hero,
     h('div.sec-head', {}, h('h2.sec-title', {}, 'Комнаты дворца'), tabBar), grid,
     h('div.sec-head', {}, h('h2.sec-title', {}, 'Сокровищница')), treasures,

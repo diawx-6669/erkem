@@ -152,3 +152,29 @@ export function scatter(kinds = ['sparkle', 'heart', 'star'], n = 6, seed = 1) {
     return `<span class="scatter" style="left:${(rnd() * 92).toFixed(1)}%;top:${(rnd() * 92).toFixed(1)}%;width:${size.toFixed(0)}px;--r:${(rnd() * 50 - 25).toFixed(0)}deg">${doodle[k]({ fill: ['#FFC93C', '#FF5FA2', '#3DDBB0'][i % 3] })}</span>`;
   }).join('');
 }
+
+/** Ночная сцена: луна, падающие звёзды и силуэт дворца с горящими окнами. */
+export function nightScene({ fit = 'slice' } = {}) {
+  const win = (x, y, w = 10, hgt = 16) => `<rect class="win-l" x="${x}" y="${y}" width="${w}" height="${hgt}" rx="${w / 2}" fill="#FFD86B"/>`;
+  const tower = (x, w, top, roofH) => `
+    <rect x="${x}" y="${top}" width="${w}" height="${300 - top}" fill="#1C0F3E"/>
+    <path d="M${x - 6} ${top} L${x + w / 2} ${top - roofH} L${x + w + 6} ${top}Z" fill="#2B1660"/>
+    <path d="M${x + w / 2} ${top - roofH} v-22" stroke="#2B1660" stroke-width="3"/>
+    <path d="M${x + w / 2} ${top - roofH - 22} l18 6 l-18 6Z" fill="#FFC93C"/>`;
+  return `<div class="night" aria-hidden="true">
+    <div class="moon"></div><span class="shoot"></span><span class="shoot s2"></span>
+    <svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax ${fit}">
+      <defs><linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A2172"/><stop offset="1" stop-color="#1A0F38"/></linearGradient></defs>
+      <path d="M0 230 C160 180 300 210 420 190 C560 166 700 200 820 180 C960 158 1080 190 1200 170 V300 H0Z" fill="url(#hill)" opacity=".85"/>
+      ${tower(330, 70, 120, 70)}${tower(800, 70, 130, 64)}
+      ${tower(450, 90, 90, 90)}${tower(660, 90, 96, 86)}
+      <rect x="370" y="170" width="460" height="130" fill="#1C0F3E"/>
+      <path d="M370 170 v-16 h22 v16 h22 v-16 h22 v16 h22 v-16 h22 v16 h22 v-16 h22 v16 h22 v-16 h22 v16 h22 v-16 h22 v16 h22 v-16 h22 v16 h22 v-16 h22 v16 h22 v-16 h22 v16 h22 v-16 h22 v16 h22 v-16 h22 v16 h22 v-16 h22 v16" fill="#1C0F3E"/>
+      ${tower(565, 70, 60, 110)}
+      <path d="M560 300 v-70 a40 40 0 0 1 80 0 v70Z" fill="#FFC93C" opacity=".9"/>
+      <path d="M570 300 v-66 a30 30 0 0 1 60 0 v66Z" fill="#FFE7A3"/>
+      ${win(355, 160)}${win(825, 170)}${win(480, 130, 12, 20)}${win(510, 170, 12, 20)}${win(690, 136, 12, 20)}${win(720, 176, 12, 20)}
+      ${win(593, 110, 14, 24)}${win(420, 210)}${win(460, 240)}${win(760, 214)}${win(730, 246)}${win(800, 240)}
+      <path d="M0 270 C200 250 380 276 600 262 C820 250 1000 276 1200 258 V300 H0Z" fill="#120A2A"/>
+    </svg></div>`;
+}

@@ -1,0 +1,80 @@
+/* ===== Финальная полировка: шрифты заголовков, стекло, ночная сцена ===== */
+
+/* заголовки: округлый жирный шрифт с золотым переливом вместо тяжёлого Oi */
+.room-title, .sec-title, .section-title, .tr-title, .menu-title, .floor-name {
+  font-family: var(--f-ui); font-weight: 900; letter-spacing: -.01em; line-height: 1.05;
+  background: linear-gradient(180deg, #FFF8DC 0%, #FFE08A 38%, #FFC93C 62%, #F29E12 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: none; filter: drop-shadow(0 2px 0 rgba(110, 60, 0, .85)) drop-shadow(0 0 16px rgba(255, 201, 60, .3));
+}
+.room-title { font-size: clamp(26px, 6.6vw, 46px); }
+.sec-title { font-size: clamp(24px, 6vw, 36px); }
+.menu-title { font-family: var(--f-hand); font-weight: 700; font-size: clamp(30px, 8vw, 42px); }
+.tr-title { font-size: 20px; }
+
+.win-title, .confirm-q, .unlock h2, .panel-card h2, .move-title, .td-kind, .decree-title, .cover-title {
+  font-family: var(--f-ui); font-weight: 900; letter-spacing: -.01em;
+  background: linear-gradient(90deg, #7A4DEB, #C2185B 55%, #E94C8F); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.win-title { font-size: clamp(32px, 8.5vw, 52px); line-height: 1.05; padding-bottom: 4px; }
+.hero-title { font-family: var(--f-ui); font-weight: 900; letter-spacing: -.02em; font-size: clamp(28px, 7.6vw, 56px); text-shadow: 0 3px 0 rgba(138, 42, 58, .9), 0 0 30px rgba(255, 255, 255, .25); }
+.cover-title { color: #fff; background: none; -webkit-background-clip: initial; text-shadow: 0 4px 0 var(--rasp); }
+
+/* шапка комнаты — стеклянная полоса */
+.room-top { position: sticky; top: 0; z-index: 30; margin: 0 calc(var(--gutter) * -1) 18px; padding: max(10px, env(safe-area-inset-top)) var(--gutter) 12px;
+  background: linear-gradient(180deg, rgba(20, 12, 46, .96), rgba(20, 12, 46, .82)); box-shadow: 0 1px 0 var(--glass-line), 0 12px 24px -16px rgba(0, 0, 0, .8); }
+@supports (backdrop-filter: blur(1px)) { .room-top { background: linear-gradient(180deg, rgba(20, 12, 46, .9), rgba(20, 12, 46, .7)); backdrop-filter: blur(10px) saturate(1.2); } }
+.room-head .back-btn { --bg: rgba(255, 255, 255, .1); --fg: #fff; --edge: rgba(0, 0, 0, .3); border-color: rgba(255, 255, 255, .25); }
+.room-head .back-btn::after { display: none; }
+
+/* подсказка — стеклянная пилюля с золотой каёмкой */
+.room-hint { background: linear-gradient(135deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .05)); color: var(--text-on-dark); border: 0;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 224, 138, .45); padding: 8px 16px 8px 8px; }
+.room-hint p { color: var(--text-on-dark); font-size: 16px; font-weight: 800; }
+.room-hint .say { width: 44px; height: 44px; background: var(--gold); box-shadow: 0 3px 0 #B57800, 0 5px 0 #2A1340; }
+.say { background: #fff; }
+
+/* мягкие тени и сияние у карточек */
+.paper-card, .chal-card, .move-card, .quiz-card { border-color: #2A1340; box-shadow: 0 0 0 3px rgba(255, 224, 138, .5), 0 10px 0 #0B0620, 0 30px 50px -20px rgba(0, 0, 0, .8); }
+.score-pill, .player-chip { border-color: #2A1340; box-shadow: 0 3px 0 #0B0620; }
+.level-card { border-color: #2A1340; box-shadow: 0 6px 0 #0B0620, 0 0 0 3px rgba(255, 224, 138, .35); }
+.level-card:nth-child(1) { background: linear-gradient(170deg, #fff, #EDE4FF); } .level-card:nth-child(2) { background: linear-gradient(170deg, #fff, #FFF1C9); } .level-card:nth-child(3) { background: linear-gradient(170deg, #fff, #D8F7EE); }
+.level-num { color: #6A3BDB; }
+.ring-bg { fill: #fff; stroke: #E4DAF5; } .ring-fg { stroke: url(#ringGrad); stroke: #8C5BFF; }
+
+/* ===== ночная сцена над главной ===== */
+.night { position: relative; height: clamp(210px, 36vw, 340px); margin: -14px calc(var(--gutter) * -1) -70px; overflow: hidden; pointer-events: none; }
+.night svg { position: absolute; inset: auto 0 0 0; width: 100%; height: 100%; }
+.moon { position: absolute; left: 9%; top: 22px; width: clamp(54px, 13vw, 96px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFFBEA, #FFE7A3 60%, #F5C95C); box-shadow: 0 0 40px 10px rgba(255, 224, 138, .35), 0 0 120px 40px rgba(255, 224, 138, .12); }
+.moon::after { content: ''; position: absolute; left: 22%; top: 46%; width: 18%; aspect-ratio: 1; border-radius: 50%; background: rgba(214, 170, 70, .35); box-shadow: 22px -14px 0 -2px rgba(214, 170, 70, .28); }
+.shoot { position: absolute; top: 20%; left: -20%; width: 120px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, transparent, #fff); rotate: 18deg; opacity: 0; animation: shoot 7s ease-in infinite; }
+.shoot.s2 { top: 10%; animation-delay: 3.6s; animation-duration: 9s; }
+@keyframes shoot { 0%, 78% { opacity: 0; translate: 0 0; } 80% { opacity: 1; } 92% { opacity: 0; translate: 120vw 38vw; } 100% { opacity: 0; translate: 120vw 38vw; } }
+.night .win-l { animation: lamp 3.2s ease-in-out infinite alternate; }
+.night .win-l:nth-child(2n) { animation-delay: -1.1s; } .night .win-l:nth-child(3n) { animation-delay: -2.3s; }
+@keyframes lamp { from { opacity: .55; } to { opacity: 1; } }
+.screen--home .profile { position: relative; z-index: 2; margin-right: 58px; background: linear-gradient(135deg, rgba(61, 35, 120, .92), rgba(34, 20, 74, .92)); }
+@supports (backdrop-filter: blur(1px)) { .screen--home .profile { background: linear-gradient(135deg, rgba(61, 35, 120, .7), rgba(34, 20, 74, .7)); backdrop-filter: blur(8px); } }
+
+/* главная карточка: блики */
+.hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, .35) 45%, transparent 55%); background-size: 250% 100%; animation: sheen 6s ease-in-out infinite; pointer-events: none; z-index: 1; }
+
+/* сокровищница: у каждой карточки свой цвет */
+.treasure:nth-child(1) { background: linear-gradient(160deg, rgba(255, 201, 60, .28), rgba(255, 201, 60, .06)); }
+.treasure:nth-child(2) { background: linear-gradient(160deg, rgba(79, 141, 255, .3), rgba(79, 141, 255, .06)); }
+.treasure:nth-child(3) { background: linear-gradient(160deg, rgba(140, 91, 255, .32), rgba(140, 91, 255, .06)); }
+.treasure:nth-child(4) { background: linear-gradient(160deg, rgba(233, 76, 143, .3), rgba(233, 76, 143, .06)); }
+.tr-title { filter: drop-shadow(0 2px 0 rgba(110, 60, 0, .85)); }
+
+/* плитки: лёгкое свечение цвета камня */
+.tile-body { box-shadow: 0 0 0 3px var(--c), 0 8px 0 3px color-mix(in srgb, var(--c) 50%, #000), 0 22px 40px -16px color-mix(in srgb, var(--c) 70%, transparent); }
+.tile:hover .tile-body, .tile:focus-visible .tile-body { box-shadow: 0 0 0 3px var(--c), 0 8px 0 3px color-mix(in srgb, var(--c) 50%, #000), 0 0 40px 2px color-mix(in srgb, var(--c) 60%, transparent); }
+
+/* вход: дворец на горизонте */
+.screen--intro .night { position: absolute; left: 0; right: 0; bottom: 0; top: auto; margin: 0; height: 34vh; z-index: 0; }
+.screen--intro .night .moon { display: none; }
+.screen--intro .intro-stage, .screen--intro .intro-after { position: relative; z-index: 1; }
+
+@media (prefers-reduced-motion: reduce) { .shoot, .hero::before { display: none; } }
+.screen--intro { padding-bottom: 0; }

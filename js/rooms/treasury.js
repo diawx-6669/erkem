@@ -99,8 +99,8 @@ function plural(n, one, few, many) {
 function chestSVG(full) {
   return `<svg viewBox="0 0 120 100" aria-hidden="true">
     ${full ? '<g class="chest-glow"><path d="M30 40 L18 10 M60 34 V2 M90 40 L102 10" stroke="#FFC93C" stroke-width="5" stroke-linecap="round"/></g>' : ''}
-    <path d="M14 50 H106 V90 Q106 94 102 94 H18 Q14 94 14 90Z" fill="#C2185B" stroke="#5B1A4A" stroke-width="4.5" stroke-linejoin="round"/>
-    <path d="M14 50 C14 24 106 24 106 50Z" fill="#FF5FA2" stroke="#5B1A4A" stroke-width="4.5" stroke-linejoin="round"/>
+    <path d="M14 50 H106 V90 Q106 94 102 94 H18 Q14 94 14 90Z" fill="#7A4DEB" stroke="#5B1A4A" stroke-width="4.5" stroke-linejoin="round"/>
+    <path d="M14 50 C14 24 106 24 106 50Z" fill="#A47BFF" stroke="#5B1A4A" stroke-width="4.5" stroke-linejoin="round"/>
     <path d="M30 32 V94 M90 32 V94" stroke="#FFC93C" stroke-width="7"/><path d="M30 32 V94 M90 32 V94" stroke="#5B1A4A" stroke-width="2" opacity=".4"/>
     <rect x="50" y="46" width="20" height="22" rx="4" fill="#FFC93C" stroke="#5B1A4A" stroke-width="4"/><circle cx="60" cy="56" r="3" fill="#5B1A4A"/>
   </svg>`;
