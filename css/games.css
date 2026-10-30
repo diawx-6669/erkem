@@ -411,3 +411,39 @@
 .td-card.truth { background: #FFE9F2; } .td-card.dare { background: #DDF8EF; }
 .td-kind { font: 400 30px/1 var(--f-display); color: var(--rasp); }
 .td-text { font: 900 clamp(22px, 6vw, 30px)/1.2 var(--f-ui); text-wrap: balance; }
+
+/* Телевизор и большой экран: всё крупнее, чтобы видно с дивана */
+@media (min-width: 1600px) and (min-height: 860px) {
+  body { font-size: 24px; }
+  .btn { min-height: 76px; font-size: 27px; padding: 12px 30px 14px; }
+  .btn-icon { width: 38px; height: 38px; font-size: 32px; }
+  .btn--sm { min-height: 60px; font-size: 22px; }
+  .btn--xl { min-height: 96px; font-size: 34px; }
+  .btn--xl .btn-icon { width: 54px; height: 54px; }
+  .say { width: 66px; height: 66px; }
+  .sound-toggle { width: 66px; height: 66px; top: 16px; right: 16px; }
+  .hint p { font-size: 24px; }
+  .room-head { padding-right: 84px; min-height: 76px; }
+  .room-head .back-btn { min-height: 64px; font-size: 22px; }
+  .room-title { font-size: 54px; }
+  .room-hint { max-width: 1100px; }
+  .star-meter--compact { padding: 6px 16px 6px 8px; } .sm-star { width: 40px; } .sm-num { font-size: 32px; }
+  .door-plate { font-size: 24px; }
+  .door-frame { max-width: 260px; }
+  .floor-name { font-size: 46px; } .floor-sub { font-size: 34px; }
+  .plaque { max-width: 720px; } .plaque-note { font-size: 22px; }
+  .roof { max-width: 980px; }
+  .book--spread { --pw: min(44vw, 680px, calc((100dvh - 250px) * .75)); }
+  .player-chip { min-height: 64px; font-size: 24px; } .player-ini { width: 48px; height: 48px; font-size: 24px; }
+  .score-pill { font-size: 22px; } .score-pill b { font-size: 30px; }
+  .ring-timer { width: 180px; height: 180px; } .ring-num { font-size: 64px; }
+  .overlay-box { width: min(760px, 100%); padding: 40px 32px 32px; }
+  .prize-card { width: 460px; } .prize-text { font-size: 34px; } .prize-emoji { font-size: 100px; }
+  .win-title { font-size: 64px; } .win-text { font-size: 28px; }
+  .menu-title { font-size: 48px; }
+  .level-card { width: 140px; } .level-num { font-size: 60px; }
+  .ticket-text { font-size: 26px; }
+  .tickets { grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); }
+  .move-how, .quiz-q { font-size: 34px; }
+  .td-name span { font-size: 22px; }
+}

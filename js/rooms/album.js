@@ -87,9 +87,13 @@ export function mount(root, { data }) {
       const target = flipped ? -180 : 0;
       const g = gsap();
       const isMoving = animate && ((dir > 0 && i === current - 1) || (dir < 0 && i === current));
+      // в режиме одной страницы перевёрнутые листы прячем, чтобы не торчали слева
+      const hide = mode === 'single' && flipped;
+      leaf.style.visibility = hide && !isMoving ? 'hidden' : 'visible';
       if (g && isMoving && !reduced()) {
         leaf.style.zIndex = leaves.length + 5;
-        g.to(leaf, { rotationY: target, duration: 0.9, ease: 'power2.inOut', onComplete: () => { leaf.style.zIndex = flipped ? i + 1 : leaves.length - i + 1; } });
+        leaf.style.visibility = 'visible';
+        g.to(leaf, { rotationY: target, duration: 0.9, ease: 'power2.inOut', onComplete: () => { leaf.style.zIndex = flipped ? i + 1 : leaves.length - i + 1; if (hide) leaf.style.visibility = 'hidden'; } });
         g.fromTo(leaf.querySelectorAll('.face'), { '--shade': 0 }, { '--shade': 0.35, duration: 0.45, yoyo: true, repeat: 1, ease: 'sine.inOut' });
       } else if (g) g.set(leaf, { rotationY: target });
       else leaf.style.transform = `rotateY(${target}deg)`;

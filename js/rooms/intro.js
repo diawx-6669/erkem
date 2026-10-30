@@ -72,6 +72,7 @@ export function mount(app, { data, store }) {
 
   const g = gsap();
   let opened = false;
+  let raysSpin = null;
   // Подарок зовёт: подпрыгивает раз в пару секунд.
   let idle = null;
   if (g && !reduced()) {
@@ -138,8 +139,8 @@ export function mount(app, { data, store }) {
       .to(lid, { y: -window.innerHeight * 0.7, x: 160, rotation: 38, duration: 0.8, ease: 'power3.out' }, 0)
       .to(lid, { opacity: 0, duration: 0.3 }, 0.5)
       .fromTo(rays, { scale: 0.2 }, { scale: 1.4, duration: 0.8, ease: 'power2.out' }, 0)
-      .to(rays, { rotation: 90, duration: 8, ease: 'none' }, 0)
       .then();
+    raysSpin = g.to(rays, { rotation: '+=360', duration: 24, ease: 'none', repeat: -1 });
 
     // 4. фото поднимается из коробки, коробка уходит вниз
     gift.classList.add('is-open');
@@ -173,7 +174,7 @@ export function mount(app, { data, store }) {
     g.to(rays, { opacity: 0.35, duration: 1 });
   }
 
-  return () => { idle && idle.kill(); };
+  return () => { idle && idle.kill(); raysSpin && raysSpin.kill(); };
 }
 
 function buildDecree() {
