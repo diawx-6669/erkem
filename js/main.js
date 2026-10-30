@@ -27,6 +27,14 @@ export const ROOMS = [
     intro: 'Посмотри на фото и угадай, сколько тут Еркем лет.' },
   { id: 'rhythm', title: 'Ритм-сердечки', photo: '15-beach', wing: 'erkem', color: '#FF5FA2', shape: 'pointed',
     intro: 'Сердечки падают под музыку. Нажимай на кружок, когда сердечко в него попадает!' },
+  { id: 'piano', title: 'Королевское пианино', photo: '23-bandana', wing: 'erkem', color: '#8C5BFF', shape: 'arch',
+    intro: 'Нажимай на цветные клавиши и играй музыку! А в режиме «Песенка» светится клавиша, которую нажать дальше.' },
+  { id: 'cups', title: 'Где корона?', photo: '19-marble', wing: 'erkem', color: '#4F8DFF', shape: 'round',
+    intro: 'Смотри внимательно! Корону спрячут под стаканчик и перемешают. Найди её!' },
+  { id: 'whack', title: 'Поймай звёздочку', photo: '25-hanging', wing: 'erkem', color: '#2FC49C', shape: 'pointed',
+    intro: 'Еркем выглядывает из окошек! Быстро нажимай на неё, пока она не спряталась. Тучки не трогай.' },
+  { id: 'draw', title: 'Волшебная рисовалка', photo: '13-orange', wing: 'erkem', color: '#E94C8F', shape: 'arch',
+    intro: 'Рисуй пальцем блестящими красками и ставь штампы-звёздочки. Готовый рисунок можно сохранить.' },
   { id: 'freeze', title: 'Замри!', photo: '22-cap', wing: 'family', color: '#3DDBB0', shape: 'arch',
     intro: 'Танцуйте, пока играет музыка! Когда музыка остановится, все замирают. Кто пошевелился, выбывает.' },
   { id: 'moves', title: 'Повтори движение', photo: '27-mountains', wing: 'family', color: '#C2185B', shape: 'round',
@@ -47,7 +55,8 @@ export const SPECIAL = {
   treasury: { title: 'Королевская казна', photo: '00-queen' },
   album: { title: 'Как росла королева', photo: '05-mountains' },
   secret: { title: 'Секретная комната', photo: '14-beach-night' },
-  final: { title: 'Письмо для Еркем', photo: '16-red' }
+  final: { title: 'Пожелания для Еркем', photo: '16-red' },
+  parents: { title: 'Панель родителей', photo: '04-family' }
 };
 
 let DATA = null;
@@ -151,6 +160,7 @@ async function render() {
     app.append(h('div.oops', {}, h('p', {}, 'Ой, эта дверь заела. Попробуй ещё раз!'), btn({ icon: '🏰', text: 'Во дворец', onClick: goHall })));
   }
   lightOut();
+  paintDock();
   app.focus?.({ preventScroll: true });
 }
 
@@ -205,11 +215,36 @@ function secretUnlocked() {
   sfx.magic();
 }
 
+/* ---------- нижняя панель навигации ---------- */
+const DOCK = [
+  ['#/hall', 'Дворец', () => doodle.crown()],
+  ['#/treasury', 'Казна', () => '🎟️'],
+  ['#/album', 'Альбом', () => doodle.book()],
+  ['#/secret', 'Секрет', () => doodle.key()],
+  ['#/parents', 'Родителям', () => '⚙️']
+];
+const dock = h('nav.dock', { 'aria-label': 'Разделы дворца' });
+document.body.append(dock);
+function paintDock() {
+  const hash = location.hash || '';
+  dock.hidden = !hash;
+  dock.innerHTML = '';
+  const coupons = store.state.coupons.filter((c) => !c.used).length;
+  DOCK.forEach(([href, label, icon]) => {
+    const active = hash === href || (href === '#/hall' && hash.startsWith('#/room/'));
+    const a = h('a', { href, 'aria-current': active ? 'page' : null }, h('span.d-ico', { html: icon() }), h('span', {}, label));
+    if (href === '#/treasury' && coupons) a.append(h('span.d-badge', {}, String(coupons)));
+    a.addEventListener('click', () => sfx.click());
+    dock.append(a);
+  });
+}
+store.onChange(() => paintDock());
+
 /* ---------- живой фон и искорки ---------- */
 function ambient() {
   const box = document.querySelector('.ambient');
   if (!box || reduced()) return;
-  const kinds = [() => doodle.heart(), () => doodle.sparkle(), () => doodle.star(), () => doodle.heart({ fill: '#FFC93C' }), () => doodle.sparkle({ fill: '#3DDBB0' }), () => doodle.heart({ fill: '#FF9CC6' })];
+  const kinds = [() => doodle.sparkle(), () => doodle.sparkle({ fill: '#ffffff' }), () => doodle.star({ fill: '#FFE08A' }), () => doodle.sparkle({ fill: '#3DDBB0' }), () => doodle.heart({ fill: '#FF7AB3' }), () => doodle.sparkle({ fill: '#A47BFF' })];
   const n = window.innerWidth > 1000 ? 16 : 10;
   for (let i = 0; i < n; i++) {
     const s = document.createElement('span');
@@ -251,6 +286,8 @@ new MutationObserver(() => twinkleTitles(app)).observe(app, { childList: true, s
 (async function start() {
   ambient();
   DATA = await loadAll();
+  const names = store.get('players');
+  if (Array.isArray(names) && names.length) DATA.quiz.players = names;
   window.addEventListener('hashchange', render);
   render();
 })();

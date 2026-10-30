@@ -312,3 +312,13 @@ export async function micAnalyser() {
     stop() { stream.getTracks().forEach((tr) => tr.stop()); try { src.disconnect(); } catch (e) { /* ignore */ } }
   };
 }
+
+/** Одна нота для пианино: колокольчик + мягкий синтезатор. */
+export function playNote(m, dur = 0.6) {
+  unlock();
+  if (!ctx) return;
+  const t = ctx.currentTime + 0.005;
+  bell(midi(m + 12), t, dur * 1.8, 0.12);
+  tone(midi(m), t, dur, { type: 'triangle', gain: 0.16, attack: 0.005, rel: dur * 0.6 });
+  tone(midi(m) * 2, t, dur * 0.5, { type: 'sine', gain: 0.05, attack: 0.005, rel: dur * 0.4 });
+}

@@ -1,3 +1,4 @@
+import { store } from './store.js';
 // Озвучка инструкций: Еркем читает медленно, поэтому всё можно послушать.
 const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
 let voice = null;
@@ -16,7 +17,7 @@ if (synth) {
 export const canSpeak = !!synth;
 
 export function speak(text, { rate = 0.92, pitch = 1.12 } = {}) {
-  if (!synth || !text) return Promise.resolve();
+  if (!synth || !text || store.get('voiceOff') || store.get('muted')) return Promise.resolve();
   try {
     synth.cancel();
     const u = new SpeechSynthesisUtterance(String(text).replace(/[\u{1F300}-\u{1FAFF}☀-➿]/gu, ''));

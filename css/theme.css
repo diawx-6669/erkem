@@ -1,0 +1,107 @@
+/* ===== Тема «Ночной дворец»: глубокая ночь, золото и драгоценные камни. Розовый — только акцент. ===== */
+:root {
+  --night: #140C2E;
+  --night-2: #22144A;
+  --violet: #3D2378;
+  --amethyst: #8C5BFF;
+  --sapphire: #4F8DFF;
+  --sky: #5EC8FF;
+  --gold-2: #FFE08A;
+  --ivory: #FFF9F0;
+  --text-on-dark: #F6EEFF;
+  --muted-on-dark: #C9B8EE;
+  --glass-line: rgba(255, 255, 255, .14);
+}
+
+body {
+  color: var(--text-on-dark);
+  background-color: var(--night);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg fill='%23fff'%3E%3Ccircle cx='20' cy='30' r='1.1' opacity='.8'/%3E%3Ccircle cx='140' cy='18' r='.8' opacity='.6'/%3E%3Ccircle cx='200' cy='90' r='1.3' opacity='.9'/%3E%3Ccircle cx='90' cy='120' r='.7' opacity='.5'/%3E%3Ccircle cx='40' cy='190' r='1' opacity='.7'/%3E%3Ccircle cx='170' cy='200' r='.8' opacity='.6'/%3E%3Ccircle cx='110' cy='60' r='.6' opacity='.5'/%3E%3Ccircle cx='230' cy='160' r='.7' opacity='.6'/%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(ellipse 90% 60% at 50% -10%, #4A2A8C 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(61, 219, 176, .12), transparent 60%),
+    linear-gradient(180deg, #1B0F3D 0%, var(--night) 55%, #0F0924 100%);
+  background-attachment: fixed;
+}
+
+/* светлые поверхности получают тёмный текст */
+.overlay-box, .paper-card, .room-hint, .btn--ghost, .score-pill, .player-chip, .level-card, .ticket, .decree, .letter, .page, .door-plate,
+.tray-item, .td-name span, .judge, .croc-team, .croc-pass, .prize-card, .wish-text, .cb-done, .chal-card, .move-card, .quiz-card, .td-card,
+.intro-tap, .star-meter--compact, .rain-score, .rain-gifts, .bt-dots span, .booth-start, .plaque, .confirm, .cc-front, .rain-start, .age-opt,
+.tile-body, .p-card, .dock, .panel-card { color: var(--plum); }
+
+/* текст прямо на ночном фоне */
+.menu-title, .wheel-count, .move-judge-hint, .quiz-note, .age-q, .treasury-lead, .rain-start .hand { color: var(--gold-2); }
+.room-title, .section-title {
+  color: var(--gold);
+  text-shadow: 0 2px 0 #7A4B00, 0 0 24px rgba(255, 201, 60, .35);
+}
+.age-note, .dress-help, .booth-note, .croc-rule, .bt-label, .treasury-sub, .plaque-note { color: var(--muted-on-dark); }
+.hint:not(.room-hint) p { color: var(--text-on-dark); }
+.rain-keys { color: var(--muted-on-dark); }
+.rain-start { background: rgba(20, 12, 46, .72); }
+.rain-start .hand { color: var(--gold-2); }
+.rain-start .rain-keys { color: var(--muted-on-dark); }
+
+/* компактная подсказка-пилюля в комнатах */
+.room-hint { background: rgba(255, 255, 255, .96); border: 0; border-radius: 22px; box-shadow: 0 0 0 3px rgba(255, 201, 60, .5), 0 10px 30px -12px rgba(0, 0, 0, .6); }
+.room-hint p { font-size: 17px; }
+
+/* кнопки: золото и камни, розовый — меньше */
+.btn--pink { --bg: linear-gradient(180deg, #FF7AB3, #E94C8F); --edge: #9E1C59; }
+.btn--gold { --bg: linear-gradient(180deg, #FFE08A, #FFC93C 55%, #F5B21D); --edge: #B57800; }
+.btn--mint { --bg: linear-gradient(180deg, #7DF0CF, #3DDBB0); --edge: #17906F; }
+.btn--ghost { --bg: #fff; --edge: #CBB8F0; }
+.btn { background: var(--bg); border-color: #2A1340; box-shadow: 0 6px 0 var(--edge), 0 8px 0 #2A1340, 0 14px 24px -8px rgba(0, 0, 0, .55); }
+.btn:active { box-shadow: 0 1px 0 var(--edge), 0 3px 0 #2A1340; }
+.btn[aria-pressed="true"] { --bg: linear-gradient(180deg, #A47BFF, #7A4DEB); --fg: #fff; --edge: #3F2290; }
+.say { box-shadow: 0 4px 0 #CBB8F0, 0 6px 0 #2A1340; border-color: #2A1340; }
+.sound-toggle { box-shadow: 0 4px 0 #B57800, 0 6px 0 #2A1340, 0 0 24px rgba(255, 201, 60, .35); }
+
+/* стикеры на тёмном: золотое сияние вокруг */
+.sticker { box-shadow: 0 0 0 1px rgba(255, 255, 255, .2), 0 18px 30px -14px rgba(0, 0, 0, .8), 0 0 40px -10px rgba(255, 201, 60, .35); }
+
+/* оверлеи */
+.overlay { background: rgba(10, 6, 26, .72); backdrop-filter: none; }
+.overlay-box { background: var(--ivory); border-color: #2A1340; box-shadow: 0 10px 0 #2A1340, 0 0 0 6px rgba(255, 201, 60, .35), 0 40px 80px -20px rgba(0, 0, 0, .7); }
+.overlay-box::before { border-color: rgba(255, 201, 60, .7); }
+
+/* сцены игр в «окнах» с золотой рамкой */
+.rain-stage, .balloon-sky, .rhythm-stage, .disco, .potato-stage, .booth, .puzzle-board, .dress-stage {
+  box-shadow: 0 0 0 3px rgba(255, 201, 60, .55), 0 10px 0 #0B0620, 0 30px 50px -20px rgba(0, 0, 0, .8);
+  border-color: #2A1340;
+}
+.rain-stage { background: linear-gradient(#2E1B63, #5A3A9E 55%, #8E6AD0); }
+.rain-sky { opacity: .25; }
+.potato-stage { background: radial-gradient(circle at 50% 60%, color-mix(in srgb, #FF8A3D calc(var(--heat) * 100%), #3D2378), #1B0F3D 75%); }
+.balloon-sky { background: linear-gradient(#1F3A8A, #4F8DFF 60%, #9BD3FF); }
+.puzzle-tray { border-color: rgba(255, 255, 255, .25); background: rgba(255, 255, 255, .05); }
+
+/* звёзды-счётчик */
+.star-meter--compact { background: linear-gradient(180deg, #fff, #FFF4D6); border-color: #2A1340; box-shadow: 0 3px 0 #2A1340, 0 0 18px rgba(255, 201, 60, .4); }
+
+/* казна, альбом, письмо */
+.treasury-lead { color: var(--gold-2); }
+.book-count { color: var(--gold-2); }
+.locked-txt { color: var(--text-on-dark); }
+.love-title { color: var(--gold); text-shadow: 3px 3px 0 #2A1340, -3px 3px 0 #2A1340, 3px -3px 0 #2A1340, -3px -3px 0 #2A1340, 0 9px 0 #7A4B00, 0 0 40px rgba(255, 201, 60, .5); }
+.love-sign { color: var(--pink-2); } .love-kz { color: var(--mint); }
+.letter-hi, .letter-sign { color: var(--rasp); }
+
+/* вход */
+.screen--intro .intro-note .hand { color: var(--gold-2); }
+.it-small { color: var(--gold-2); } .it-mid { color: var(--text-on-dark); }
+.it-kz { color: var(--mint); }
+.gift-rays { background: repeating-conic-gradient(from 0deg, rgba(255, 201, 60, .45) 0 9deg, rgba(255, 255, 255, 0) 9deg 22.5deg); }
+.gift-box { background: linear-gradient(180deg, #8C5BFF, #6A3BDB); }
+.gift-lid { background: linear-gradient(180deg, #A47BFF, #7A4DEB); }
+.it-name .ch { color: var(--gold); text-shadow: 3px 3px 0 #fff, -3px 3px 0 #fff, 3px -3px 0 #fff, -3px -3px 0 #fff, 0 4px 0 #fff, 4px 0 0 #fff, -4px 0 0 #fff, 0 10px 0 #B57800, 0 12px 0 #2A1340, 0 0 50px rgba(255, 201, 60, .6); }
+.it-name .ch:nth-child(2n) { color: var(--pink); }
+.it-name .ch:nth-child(3) { color: var(--mint); }
+.intro-skip { background: rgba(255, 255, 255, .1); color: var(--text-on-dark); border-color: var(--glass-line); }
+
+/* фон: золотые искры вместо сердечек */
+.ambient span { filter: drop-shadow(0 0 6px rgba(255, 220, 120, .6)); }
+.twinkle.t2 { background: #fff; }
+.it-age, .it-age-txt { color: var(--plum); }
+.room-title { color: #FFE08A; text-shadow: 0 3px 0 #8A4B00, 0 0 22px rgba(255, 201, 60, .35); }
