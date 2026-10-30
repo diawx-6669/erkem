@@ -78,3 +78,4 @@
 
 @media (prefers-reduced-motion: reduce) { .shoot, .hero::before { display: none; } }
 .screen--intro { padding-bottom: 0; }
+.gift.is-open:focus, .gift.is-open:focus-visible { outline: none; }

@@ -91,6 +91,7 @@ export function mount(app, { data, store }) {
   gift.addEventListener('click', async () => {
     if (opened) return;
     opened = true;
+    gift.blur();
     unlock();
     idle && idle.kill();
     store.set('seenIntro', true);

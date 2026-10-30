@@ -60,11 +60,12 @@
   .photo-pick { width: min(100%, 900px); grid-template-columns: repeat(8, minmax(0, 1fr)); }
 
   /* вход: после открытия — фото слева, титул справа */
-  .screen--intro:has(.intro-after.is-on) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: start; column-gap: 40px; max-width: 1400px; height: 100dvh; overflow-y: auto; }
+  .screen--intro:has(.intro-after.is-on) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: start; column-gap: 40px; max-width: 1400px; overflow: visible; overflow-x: clip; }
   .screen--intro:has(.intro-after.is-on) .intro-stage { position: sticky; top: 0; min-height: 100dvh; padding: 120px 0 40px; }
   .screen--intro:has(.intro-after.is-on) .gift { width: min(400px, 34vw); }
   .screen--intro:has(.intro-after.is-on) .intro-after { padding: 60px 0 40px; }
-  .screen--intro .it-name { font-size: clamp(80px, 9vw, 150px); }
+  .screen--intro .intro-after { container-type: inline-size; }
+  .screen--intro .it-name { font-size: min(150px, 17cqw); }
   .screen--intro .intro-actions { margin: 26px 0 40px; }
 }
 
