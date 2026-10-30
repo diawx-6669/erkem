@@ -1,0 +1,94 @@
+/* ===== Ноутбук и большой экран (от 1000px): боковая панель, широкие раскладки ===== */
+.d-logo { display: none; }
+@media (max-width: 999px) { .dock a[href="#/final"] { display: none; } }
+
+@media (min-width: 1000px) {
+  /* боковая панель вместо нижней */
+  .dock {
+    left: 0; top: 0; bottom: 0; translate: none; width: 232px; max-width: none;
+    flex-direction: column; gap: 4px; padding: 22px 14px; border-radius: 0 30px 30px 0;
+    background: linear-gradient(180deg, #2A1858, #170D36 70%);
+    box-shadow: inset -1px 0 0 var(--glass-line), 14px 0 40px -20px rgba(0, 0, 0, .8);
+  }
+  .dock a { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 11px 14px; border-radius: 16px; color: var(--muted-on-dark); font: 900 17px/1.1 var(--f-ui); }
+  .dock a:hover { background: rgba(255, 255, 255, .08); color: #fff; }
+  .dock a .d-ico { width: 34px; height: 34px; font-size: 24px; flex: none; }
+  .dock a .d-ico .doodle { width: 34px; }
+  .dock a[aria-current="page"] { background: linear-gradient(90deg, #8C5BFF, #6A3BDB); color: #fff; box-shadow: 0 8px 20px -8px rgba(140, 91, 255, .9); }
+  .dock a[aria-current="page"] .d-ico { translate: none; }
+  .dock .d-badge { position: static; margin-left: auto; }
+  .dock .d-logo { display: flex; align-items: center; gap: 10px; margin: 0 0 22px; padding: 6px 8px 18px; border-bottom: 1px solid var(--glass-line); border-radius: 0; }
+  .dock .d-logo:hover { background: none; }
+  .d-logo-crown { width: 52px; flex: none; animation: crown-tip 3s ease-in-out infinite; }
+  .d-logo-txt { display: grid; font: 400 26px/1 var(--f-display); color: var(--gold); text-shadow: 0 3px 0 #7A4B00; }
+  .d-logo-txt small { font: 700 20px/1 var(--f-hand); color: var(--muted-on-dark); text-shadow: none; margin-bottom: 2px; }
+  .dock a[href="#/parents"] { margin-top: auto; }
+
+  body:has(.dock:not([hidden])) #app { padding-left: 232px; }
+  .screen { max-width: 1420px; padding: 0 40px 60px; }
+  .room-top { margin: 0 -40px 24px; padding: 14px 40px; }
+  .room-head { padding-right: 70px; }
+  .room-title { font-size: 38px; }
+  .room-hint { max-width: 900px; }
+  .room-hint p { font-size: 17px; }
+  .room-head .back-btn { color: #fff; }
+
+  /* главная: ночное небо — баннер, профиль и главная игра в ряд */
+  .screen--home { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); column-gap: 24px; align-items: stretch; padding-top: 0; }
+  .screen--home > .night, .screen--home > .sec-head, .screen--home > .tiles, .screen--home > .treasures, .screen--home > .home-sign { grid-column: 1 / -1; }
+  .screen--home > .night { height: 250px; margin: 0 -40px -150px; }
+  .screen--home .profile { margin: 0; align-content: center; }
+  .screen--home .hero { margin: 0; min-height: 260px; }
+  .screen--home .moon { left: auto; right: 14%; }
+  .who-name { font-size: 58px; }
+  .avatar { width: 108px; height: 108px; }
+  .avatar-crown { width: 70px; left: 19px; top: -40px; }
+  .hero-title { font-size: 50px; }
+  .hero-sub { font-size: 18px; }
+  .hero-photo { width: 200px; }
+  .sec-head { margin: 34px 0 18px; }
+  .tiles { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 26px 18px; }
+  .tile-name { font-size: 17px; }
+  .treasures { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .tr-art { width: 84px; }
+
+  /* меню уровней и выбор фото — крупнее */
+  .level-card { width: 170px; padding: 20px 10px 18px; } .level-card--wide { width: 220px; }
+  .level-num { font-size: 64px; } .level-txt { font-size: 18px; } .level-lbl { font-size: 28px; }
+  .level-crowns .doodle { width: 30px; }
+  .memory-menu, .balloon-menu { padding-top: 30px; }
+  .photo-pick { width: min(100%, 900px); grid-template-columns: repeat(8, minmax(0, 1fr)); }
+
+  /* вход: после открытия — фото слева, титул справа */
+  .screen--intro:has(.intro-after.is-on) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: start; column-gap: 40px; max-width: 1400px; height: 100dvh; overflow-y: auto; }
+  .screen--intro:has(.intro-after.is-on) .intro-stage { position: sticky; top: 0; min-height: 100dvh; padding: 120px 0 40px; }
+  .screen--intro:has(.intro-after.is-on) .gift { width: min(400px, 34vw); }
+  .screen--intro:has(.intro-after.is-on) .intro-after { padding: 60px 0 40px; }
+  .screen--intro .it-name { font-size: clamp(80px, 9vw, 150px); }
+  .screen--intro .intro-actions { margin: 26px 0 40px; }
+}
+
+@media (min-width: 1400px) {
+  .tiles { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1000px) {
+  /* колесо слева, кнопки справа */
+  .game-wheel .game-body > .center-col { grid-template-columns: auto minmax(260px, 340px); grid-template-rows: auto auto 1fr; column-gap: 60px; justify-content: center; align-items: center; }
+  .game-wheel .wheel-wrap { grid-row: 1 / 4; width: min(560px, calc(100dvh - 250px)); }
+  .game-wheel .wheel-count { align-self: end; font-size: 40px; }
+  .game-wheel .choose-row { flex-direction: column; align-self: start; }
+  /* окошки «Поймай звёздочку» помещаются в экран */
+  .whack { max-width: min(560px, calc((100dvh - 330px) * .95)); }
+  /* торт крупнее */
+  .cake { width: min(520px, 40vw); }
+  /* семь коробочек в ряд */
+  .wishes { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .wish { min-height: 200px; }
+  .wish-text { font-size: 22px; }
+  /* книга и игровые поля чуть крупнее */
+  .rain-stage, .balloon-sky { height: calc(100dvh - 230px); }
+  .rhythm-stage { height: calc(100dvh - 230px); }
+}
+.wish-num { color: var(--plum); }
+@media (min-width: 1000px) { .whack { max-width: min(560px, calc((100dvh - 370px) * .95)); } }

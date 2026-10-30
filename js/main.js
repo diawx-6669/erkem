@@ -221,6 +221,7 @@ const DOCK = [
   ['#/treasury', 'Казна', () => '🎟️'],
   ['#/album', 'Альбом', () => doodle.book()],
   ['#/secret', 'Секрет', () => doodle.key()],
+  ['#/final', 'Пожелания', () => doodle.envelope()],
   ['#/parents', 'Родителям', () => '⚙️']
 ];
 const dock = h('nav.dock', { 'aria-label': 'Разделы дворца' });
@@ -229,6 +230,7 @@ function paintDock() {
   const hash = location.hash || '';
   dock.hidden = !hash;
   dock.innerHTML = '';
+  dock.append(h('a.d-logo', { href: '#/hall', 'aria-label': 'Дворец Еркем' }, h('span.d-logo-crown', { html: doodle.crown() }), h('span.d-logo-txt', {}, h('small', {}, 'Дворец'), 'Еркем')));
   const coupons = store.state.coupons.filter((c) => !c.used).length;
   DOCK.forEach(([href, label, icon]) => {
     const active = hash === href || (href === '#/hall' && hash.startsWith('#/room/'));
